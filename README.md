@@ -1,11 +1,11 @@
 # Displaying a List of items with Redux
 
-## Objectives
+## Introduction
 
-With this lesson we'll finish up what we worked on the in the forms code along 
+With this lesson we'll finish up what we worked on the in the forms code-along 
 by displaying our list of todos. By the end of this lesson, you will be able to:
 
-* Display a list of elements from our __Redux__ store
+* Display a list of elements from our **Redux** store
 
 ## Goal
 
@@ -17,14 +17,13 @@ the store to render the list of Todos.
 
 The `CreateTodo` component is handling the creation side of things, so let's make 
 a new component where we'll be getting todos from the store. We'll call this 
-`TodosContainer` and connect it to __Redux__.
+`TodosContainer` and connect it to **Redux**.
 
-
-```js
+```jsx
 // ./src/components/todos/TodosContainer.js
 
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
 class TodosContainer extends Component {
 
@@ -42,7 +41,7 @@ Next we need to get the list of todos from our __Redux__ state, so we'll need
 to write out a `mapStateToProps()` function and include it as an argument for 
 `connect()`:
 
-```js
+```jsx
 ...
 const mapStateToProps = state => {
   return {
@@ -56,7 +55,7 @@ export default connect(mapStateToProps)(TodosContainer);
 We can confirm this is working by adding a log in the render of TodosContainer. 
 We have already imported and rendered the TodosContainer in our App component.
 
-Now that we have a way to get data from __Redux__, we can create a presentational 
+Now that we have a way to get data from **Redux**, we can create a presentational 
 component to handle displaying our todos.
 
 ## Creating a Presentational Todo Component
@@ -65,10 +64,10 @@ To start, we'll have each todo rendered as a list item. Open the `Todo.js` file
 which is inside the `./src/components/todos` folder. Inside it, let's write a 
 functional component that returns an `li` displaying props:
 
-```js
+```jsx
 // ./src/components/todos/Todo.js
 
-import React from 'react';
+import React from "react";
 
 const Todo = props => {
   return (
@@ -79,16 +78,16 @@ const Todo = props => {
 export default Todo;
 ```
 
-Then, in our __TodosContainer__ component, we'll import our `Todo` component, 
+Then, in our **TodosContainer** component, we'll import our `Todo` component, 
 then map through the list of todos we're getting from state and render the `Todo` 
 component for each of them:
 
-```js
+```jsx
 // ./src/components/todos/TodosContainer.js
 
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Todo from './Todo';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Todo from "./Todo";
 
 class TodosContainer extends Component {
 
@@ -114,19 +113,19 @@ export default connect(mapStateToProps)(TodosContainer);
 
 ```
 
-Now our TodosContainer is mapping over the todos it received from __Redux__, 
+Now our TodosContainer is mapping over the todos it received from **Redux**, 
 and passing the value of each todo into a child component, Todo. Todo in this 
-case doesn't have any __Redux__ related code, and is a regular, functional 
+case doesn't have any **Redux** related code, and is a regular, functional 
 component.
 
 ## Cleanup Todo Input
 
 Currently when we enter a todo and click Submit, the text we entered remains in 
-the input field; let's fix that. We can do that inside our __handleSubmit__ 
+the input field; let's fix that. We can do that inside our **handleSubmit** 
 function. We can reset the *component's* state each time the submit button is 
 clicked by changing our function to the following:
 
-```js
+```jsx
 // ./src/components/todos/CreateTodo.js
 
 ...
@@ -135,7 +134,7 @@ handleSubmit = event => {
   event.preventDefault();
   this.props.addTodo(this.state)
   this.setState({
-    text: '',
+    text: "",
   })
 }
 
@@ -167,11 +166,11 @@ the component state as an argument.
 Finally, we built our reducer to take the action and concat the new todo into 
 our Redux state.
 
-Then, in this lesson, we got our __Todos__ component working simply by accessing 
+Then, in this lesson, we got our **Todos** component working simply by accessing 
 the state from the store, and then iterating through the list of todos and 
-rendering the __Todo__ component for each one.
+rendering the **Todo** component for each one.
 
 
-## References
+## Resources
 
 - [React Documentation - Controlled Components](https://facebook.github.io/react/docs/forms.html)
